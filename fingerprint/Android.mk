@@ -1,4 +1,4 @@
-# Copyright (C) 2009 The Android Open Source Project
+# Copyright (C) 2013 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,29 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 LOCAL_PATH := $(call my-dir)
 
-# HAL module implemenation stored in
-# hw/<SENSORS_HARDWARE_MODULE_ID>.<ro.hardware>.so
 include $(CLEAR_VARS)
 
+LOCAL_MODULE := fingerprint.goldfish
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_SRC_FILES := sensors_qemu.c
-ifeq ($(TARGET_PRODUCT),vbox_x86)
-LOCAL_MODULE := sensors.vbox_x86
-else
-LOCAL_MODULE := sensors.goldfish
-endif
+LOCAL_SRC_FILES := fingerprint.c
+LOCAL_SHARED_LIBRARIES := liblog
+
 include $(BUILD_SHARED_LIBRARY)
 
-
 include $(CLEAR_VARS)
 
+LOCAL_MODULE := fingerprint.ranchu
 LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_SRC_FILES := sensors_qemu.c
-LOCAL_MODULE := sensors.ranchu
+LOCAL_SRC_FILES := fingerprint.c
+LOCAL_SHARED_LIBRARIES := liblog
 
 include $(BUILD_SHARED_LIBRARY)
